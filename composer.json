@@ -1,0 +1,26 @@
+{
+    "name": "arhone/session",
+    "description": "Управление сессией (PHP 7)",
+    "homepage": "https://github.com/arhone/session",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Алексей Арх",
+            "email": "info@arh.one"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "arhone\\session\\": ""
+        },
+        "classmap": [
+            "SessionInterface.php",
+            "Session.php"
+        ]
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.0"
+    }
+}
