@@ -17,11 +17,28 @@ interface SessionInterface {
     public function __construct (array $config = []);
 
     /**
+     * Возвращает или устанавливает имя сессии
+     *
+     * @param null|string $name
+     * @return string
+     */
+    public function name ($name = null) : string;
+
+    /**
+     * Получает и/или устанавливает идентификатор текущей сессии
+     *
+     * @param string|null $id
+     * @return string
+     */
+    public function id ($id = null) : string;
+
+    /**
      * Запуск сессии
      *
+     * @param string|null $id
      * @return bool
      */
-    public function start () : bool;
+    public function start ($id = null) : bool;
 
     /**
      * Статус сессии
@@ -48,12 +65,29 @@ interface SessionInterface {
     public function get (string $name);
 
     /**
-     * Удалить сессию
+     * Удалить данные из сессии
      *
      * @param string $name
      * @return mixed
      */
     public function delete (string $name);
+
+    /**
+     * Удалить сессию
+     *
+     * @return bool
+     */
+    public function destroy () : bool;
+
+    /**
+     * Записывает данные сессии и завершает её
+     */
+    public function close ();
+
+    /**
+     * Удалить все переменные сессии
+     */
+    public function unset ();
 
     /**
      * Метод для установки настроек класса

@@ -14,7 +14,9 @@ class Session implements SessionInterface {
      *
      * @var array
      */
-    protected static $config = [];
+    protected $config = [
+        'name' => 'session'
+    ];
 
     /**
      * SessionInterface constructor.
@@ -24,16 +26,44 @@ class Session implements SessionInterface {
     public function __construct (array $config = []) {
 
         self::config($config);
-        $this->start();
+
+    }
+
+    /**
+     * Возвращает или устанавливает имя сессии
+     *
+     * @param null|string $name
+     * @return string
+     */
+    public function name ($name = null) : string {
+
+        return session_name(!empty($name) ? $name : $this->config['name']);
+
+    }
+
+    /**
+     * Получает и/или устанавливает идентификатор текущей сессии
+     *
+     * @param string|null $id
+     * @return string
+     */
+    public function id ($id = null) : string {
+
+        return !empty($id) ? session_id($id) : session_id();
 
     }
 
     /**
      * Запуск сессии
      *
+     * @param string|null $id
      * @return bool
      */
-    public function start () : bool {
+    public function start ($id = null) : bool {
+
+        if (!empty($id)) {
+            $this->id($id);
+        }
 
         $status = $this->status();
 
@@ -138,6 +168,35 @@ class Session implements SessionInterface {
     }
 
     /**
+     * Удалить сессию
+     *
+     * @return bool
+     */
+    public function destroy () : bool {
+
+        return session_destroy();
+
+    }
+
+    /**
+     * Записывает данные сессии и завершает её
+     */
+    public function close () {
+
+        session_write_close();
+
+    }
+
+    /**
+     * Удалить все переменные сессии
+     */
+    public function unset () {
+
+        session_unset();
+
+    }
+
+    /**
      * Метод для установки настроек класса
      *
      * @param array $config
@@ -145,7 +204,7 @@ class Session implements SessionInterface {
      */
     public function config (array $config) : array {
 
-        return self::$config = array_merge(self::$config, $config);
+        return $this->config = array_merge($this->config, $config);
 
     }
 
