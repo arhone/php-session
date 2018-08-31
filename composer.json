@@ -12,14 +12,11 @@
     ],
     "autoload": {
         "psr-4": {
-            "arhone\\session\\": ""
+            "arhone\\session\\": "source/"
         },
-        "classmap": [
-            "SessionInterface.php",
-            "Session.php"
-        ]
+        "classmap": ["source/"]
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": "^7.0"
     }

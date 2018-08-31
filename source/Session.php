@@ -1,4 +1,5 @@
 <?php declare(strict_types = 1);
+
 namespace arhone\session;
 
 /**
@@ -6,6 +7,7 @@ namespace arhone\session;
  *
  * Class Session
  * @package arhone\session
+ * @author Алексей Арх <info@arh.one>
  */
 class Session implements SessionInterface {
 

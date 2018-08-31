@@ -1,11 +1,13 @@
 <?php declare(strict_types = 1);
+
 namespace arhone\session;
 
 /**
- * Управление сессией
+ *  Управление сессией
  *
  * Interface SessionInterface
  * @package arhone\session
+ * @author Алексей Арх <info@arh.one>
  */
 interface SessionInterface {
 
