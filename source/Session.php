@@ -102,7 +102,7 @@ class Session implements SessionInterface {
     public function set (string $name, $value) {
 
         $session = &$_SESSION;
-        foreach (explode('.', $name) as $key) {
+        foreach (explode(':', $name) as $key) {
 
             if (!is_array($session)) {
                 $session = [];
@@ -125,7 +125,7 @@ class Session implements SessionInterface {
     public function get (string $name) {
 
         $session = &$_SESSION;
-        foreach (explode('.', $name) as $key) {
+        foreach (explode(':', $name) as $key) {
 
             if (isset($session[$key])) {
 
@@ -152,7 +152,7 @@ class Session implements SessionInterface {
     public function delete (string $name) {
 
         $session = &$_SESSION;
-        $name    = explode('.', $name);
+        $name    = explode(':', $name);
         foreach ($name as $id => $key) {
 
             if (isset($session[$key]) && !isset($name[$id + 1])) {
